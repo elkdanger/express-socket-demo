@@ -16,6 +16,8 @@ io.on('connection', socket => {
     
     console.log('A user connected')
     
+    socket.broadcast.emit('joined')
+    
     users++
     
     io.emit('users changed', users)
@@ -28,6 +30,7 @@ io.on('connection', socket => {
       console.log('user disconnected')
       users--  
       io.emit('users changed', users)
+      io.emit('user disconnected')
     })
     
 })

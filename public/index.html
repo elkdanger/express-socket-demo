@@ -90,6 +90,10 @@
         
         socket.on('users changed', function(count) {
             vm.users(count)
+        }).on('joined', function() {
+            vm.messages.push('Someone joined the chat..')
+        }).on('user disconnected', function() {
+            vm.messages.push('A user left the chat')
         })
         
         ko.applyBindings(vm)                
